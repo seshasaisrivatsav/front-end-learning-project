@@ -50,13 +50,18 @@ window.onload = function () {
 let inHtml = "";
 $.each(profiles, function (i, e) {
     
-    let childInfo = "";
-    for (let i=0; i<e.children.length; i++) {
-        childInfo += e.children[i].name + " " + e.children[i].age + " |";
+    let childInfo = " ";
+    if(e.children.length===0) {
+        childInfo = "none";
+    } else {
+        for (let i=0; i<e.children.length; i++) {
+            childInfo += e.children[i].name + ", " + e.children[i].age + " | ";
+        }
+        childInfo = childInfo.substr(0, childInfo.length-2);
     }
     
     let newItem = "<tr>"+
-        "<td>"+i+"</td>" + 
+        "<td>"+(i+1)+"</td>" + 
         "<td>"+e.name +"</td>"+
         "<td>"+e.age+"</td>"+
        "<td>"+e.relationshipStatus+"</td>"+
